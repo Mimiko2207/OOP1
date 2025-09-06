@@ -8,6 +8,7 @@ public class ProductBasket {
     // Внутренний список продуктов
     private List<Product> products;
 
+
     // Конструктор
     public ProductBasket() {
         this.products = new ArrayList<>();
