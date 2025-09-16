@@ -1,6 +1,7 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.ProductBasket;
 
 
@@ -10,10 +11,10 @@ public class App {
         ProductBasket basket = new ProductBasket();
 
         // Создаем продукты
-        Product product1 = new Product("Молоко", 50);
-        Product product2 = new Product("Хлеб", 30);
-        Product product3 = new Product("Яблоки", 20);
-        Product product4 = new Product("Сыр", 100);
+        Product product1 = new SimpleProduct("Молоко", 50);
+        Product product2 = new SimpleProduct("Хлеб", 30);
+        Product product3 = new SimpleProduct("Яблоки", 20);
+        Product product4 = new SimpleProduct("Сыр", 100);
 
         // 1. Добавление продукта в корзину
         basket.addProduct(product1);

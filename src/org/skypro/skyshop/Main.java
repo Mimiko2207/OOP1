@@ -1,6 +1,9 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.ProductBasket;
 
 
@@ -8,37 +11,41 @@ public class Main {
     public static void main(String[] args) {
         // Создаем корзину
         ProductBasket basket = new ProductBasket();
-
+        basket.countSpecialProducts();
         // Создаем продукты
-        Product product1 = new Product("Молоко", 50);
-        Product product2 = new Product("Хлеб", 30);
-        Product product3 = new Product("Яблоки", 20);
-        Product product4 = new Product("Сыр", 100);
+        Product product1 = new SimpleProduct("Молоко", 50);
+        Product product2 = new DiscountedProduct("Хлеб", 30, 10);
+        Product product3 = new FixPriceProduct("Яблоки", 10);
+        Product product4 = new SimpleProduct("Сыр", 100);
 
         // 1. Добавление продукта в корзину
         basket.addProduct(product1);
-        System.out.println("Добавлен продукт: " + product1.getName());
+        System.out.println("Добавлен продукт: " + product1.getName() + ": " + product1.getPrice() + " рублей.");
 
         // 2. Добавление продукта в заполненную корзину, в которой нет свободного места
         // В данном случае список не ограничен по размеру, поэтому добавляем еще один
         basket.addProduct(product2);
-        System.out.println("Добавлен продукт: " + product2.getName());
+        System.out.println("Добавлен продукт: " + product2.getName() + ": " + product2.getPrice() + " рублей ( скидка " + product2.getPrice() + "% ).");
 
         // 3. Добавляем еще один товар
         basket.addProduct(product3);
-        System.out.println("Добавлен продукт: " + product3.getName());
+        System.out.println("Добавлен продукт: " + product3.getName() + ": " + product3.getPrice() + " рублей. Фиксированная цена " + product3.getPrice() + " рублей.");
 
         // 4. Печать содержимого корзины
-        System.out.println("\nСодержимое корзины:");
+        System.out.println("Содержимое корзины:");
         basket.printContents();
+
+        int specialCount = basket.countSpecialProducts();
+        System.out.println("Количество товаров со скидкой или фиксированной ценой: " + specialCount);
 
         // 5. Получение стоимости корзины
         int totalPrice = basket.getTotalPrice();
-        System.out.println("\nОбщая стоимость корзины: " + totalPrice);
+        System.out.println("Общая стоимость корзины: " + totalPrice);
+
 
         // 6. Поиск товара, который есть в корзине
         String searchName1 = "Хлеб";
-        System.out.println("\nПоиск товара '" + searchName1 + "': " + basket.containsProductByName(searchName1));
+        System.out.println("Поиск товара '" + searchName1 + "': " + basket.containsProductByName(searchName1));
 
         // 7. Поиск товара, которого нет в корзине
         String searchName2 = "Масло";
@@ -49,13 +56,15 @@ public class Main {
         System.out.println("Корзина очищена.");
 
         // 9. Печать содержимого пустой корзины
-        System.out.println("\nПечать содержимого после очистки:");
+        System.out.println("Печать содержимого после очистки:");
         basket.printContents();
 
         // 10. Получение стоимости пустой корзины
-        System.out.println("\nСтоимость пустой корзины: " + basket.getTotalPrice());
+        System.out.println("Стоимость пустой корзины: " + basket.getTotalPrice());
 
         // 11. Поиск товара по имени в пустой корзине
         System.out.println("Поиск товара 'Яблоки' в пустой корзине: " + basket.containsProductByName("Яблоки"));
+
+
     }
 }

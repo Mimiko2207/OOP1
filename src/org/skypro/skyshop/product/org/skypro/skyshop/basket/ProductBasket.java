@@ -16,6 +16,7 @@ public class ProductBasket {
 
     /**
      * Метод добавления продукта в корзину.
+     *
      * @param product продукт для добавления
      */
     public void addProduct(Product product) {
@@ -24,6 +25,7 @@ public class ProductBasket {
 
     /**
      * Метод получения общей стоимости корзины.
+     *
      * @return сумма стоимости всех товаров
      */
     public int getTotalPrice() {
@@ -56,6 +58,7 @@ public class ProductBasket {
 
     /**
      * Проверяет наличие продукта по имени.
+     *
      * @param name имя продукта
      * @return true, если продукт есть, иначе false
      */
@@ -79,6 +82,7 @@ public class ProductBasket {
 
     /**
      * Вспомогательный метод для проверки, все ли элементы null.
+     *
      * @return true, если все null, иначе false
      */
     private boolean allNulls() {
@@ -88,5 +92,15 @@ public class ProductBasket {
             }
         }
         return true;
+    }
+
+    public int countSpecialProducts() {
+        int count = 0;
+        for (Product product : products) {
+            if (product.isSpecial()) {
+                count++;
+            }
+        }
+        return count;
     }
 }
