@@ -66,18 +66,17 @@ public class Main {
 
         // 11. Поиск товара по имени в пустой корзине
         System.out.println("Поиск товара 'Яблоки' в пустой корзине: " + basket.containsProductByName("Яблоки"));
-    }
-        public static void main(String[] args) {
+
             // Создаем движок поиска с размером массива 10
             SearchEngine searchEngine = new SearchEngine(10);
 
             // Создаем и добавляем товары
-            Article product1 = new Article("Телевизор Samsung");
-            Article product2 = new Article("Ноутбук Dell");
-            Article product3 = new Article("Мышь Logitech");
-            searchEngine.add(product1);
-            searchEngine.add(product2);
-            searchEngine.add(product3);
+            Article product10 = new Article("Телевизор Samsung", "fuse");
+            Article product20 = new Article("Ноутбук Dell", "fuze");
+            Article product30 = new Article("Мышь Logitech", "fuze");
+            searchEngine.add(product10);
+            searchEngine.add(product20);
+            searchEngine.add(product30);
 
             // Создаем и добавляем статьи
             Article article1 = new Article("Обзор смартфона", "Это подробный обзор смартфона...");

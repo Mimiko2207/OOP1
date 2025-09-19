@@ -8,12 +8,13 @@ public class SearchEngine {
     private Searchable[] items;
     private int count;
 
+    public SearchEngine(int i) {
+    }
+
 
     public void add(Article product1) {
     }
 
-    public Searchable[] search(String term) {
-    }
     public void SearchEngine(int size) {
         this.items = new Searchable[size];
         this.count = 0;
@@ -25,21 +26,26 @@ public class SearchEngine {
         } else {
             // Можно добавить обработку переполнения, если нужно
             System.out.println("Массив полон, добавление невозможно");
-
         }
-    public Searchable[] search(String searchTerm) {
-        Searchable[] results = new Searchable[5];
-        int foundCount = 0;
+        return new Searchable[0];
+    }
+    public Searchable[] search(String searchTerm){
+            Searchable[] results = new Searchable[5];
+            int foundCount = 0;
 
-        for (Searchable item : items) {
-            if (item != null && item.getSearchTerm().contains(searchTerm)) {
-                results[foundCount++] = item;
-                if (foundCount == 5) {
-                    break;
-                }
-            }
+            for (Searchable item : items) {
+                if (item != null && item.getSearchTerm().contains(searchTerm)) {
+                    results[foundCount++] = item;
+                    if (foundCount == 5) {
+                        break;
+                    }
 
-            return results;
-        }
+
+                return results;
+            }}
+        return results;
+    }}
+
+
 
 
