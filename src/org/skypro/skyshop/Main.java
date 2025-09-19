@@ -4,7 +4,9 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.product.org.skypro.skyshop.basket.Article;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.org.skypro.skyshop.basket.Searchable;
 
 
 public class Main {
@@ -65,6 +67,35 @@ public class Main {
         // 11. Поиск товара по имени в пустой корзине
         System.out.println("Поиск товара 'Яблоки' в пустой корзине: " + basket.containsProductByName("Яблоки"));
 
+            // Создаем движок поиска с размером массива 10
+            SearchEngine searchEngine = new SearchEngine(10);
 
+            // Создаем и добавляем товары
+            Article product10 = new Article("Телевизор Samsung", "fuse");
+            Article product20 = new Article("Ноутбук Dell", "fuze");
+            Article product30 = new Article("Мышь Logitech", "fuze");
+            searchEngine.add(product10);
+            searchEngine.add(product20);
+            searchEngine.add(product30);
+
+            // Создаем и добавляем статьи
+            Article article1 = new Article("Обзор смартфона", "Это подробный обзор смартфона...");
+            Article article2 = new Article("Лучшие ноутбуки 2025", "Обзор лучших ноутбуков этого года...");
+            searchEngine.add(article1);
+            searchEngine.add(article2);
+
+            // Выполняем поиск по разным строкам
+            String[] searchTerms = {"Dell", "Обзор", "смартфон", "мышь", "2025"};
+
+            for (String term : searchTerms) {
+                System.out.println("Результаты поиска по: \"" + term + "\":");
+                Searchable[] results = searchEngine.search(term);
+                for (Searchable result : results) {
+                    if (result != null) {
+                        System.out.println(result.getStringRepresentation());
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
-}
