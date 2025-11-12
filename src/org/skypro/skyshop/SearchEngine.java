@@ -3,21 +3,25 @@ package org.skypro.skyshop;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.Article;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.Searchable;
 
+import java.util.List;
+
 public class SearchEngine {
 
     private Searchable[] items;
     private int count;
 
-    public SearchEngine(int i) {
-    }
 
 
-    public void add(Article product1) {
-    }
-
-    public void SearchEngine(int size) {
+    public SearchEngine(int size) {
         this.items = new Searchable[size];
         this.count = 0;
+
+        this.items = new Searchable[size];
+        this.count = 0;
+    }
+
+    public static Searchable findBestMatch(String searchTerm2, List<Searchable> items) {
+        return null;
     }
 
     public Searchable[] add(Searchable item) {
