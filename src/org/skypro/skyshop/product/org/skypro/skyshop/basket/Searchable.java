@@ -1,3 +1,4 @@
+
 package org.skypro.skyshop.product.org.skypro.skyshop.basket;
 
 public interface Searchable {

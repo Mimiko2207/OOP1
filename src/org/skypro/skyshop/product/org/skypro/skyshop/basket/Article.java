@@ -1,5 +1,6 @@
 package org.skypro.skyshop.product.org.skypro.skyshop.basket;
 
+
 public class Article implements Searchable {
     private final String title;
     private final String text;
