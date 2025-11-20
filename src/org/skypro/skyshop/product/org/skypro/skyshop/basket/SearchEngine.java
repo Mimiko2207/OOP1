@@ -16,7 +16,14 @@ public class SearchEngine {
             String term = item.getSearchTerm();
             int count = 0;
             int index = 0;
-            int indexSub;
+            while ((index = term.indexOf(search, index)) != -1) {
+                count++;
+                index += search.length();
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                bestMatch = item;
+            }
         }
         return bestMatch;
     }
