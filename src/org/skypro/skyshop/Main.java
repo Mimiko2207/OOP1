@@ -6,7 +6,6 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.Article;
-import org.skypro.skyshop.product.org.skypro.skyshop.basket.BestResultNotFound;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.org.skypro.skyshop.basket.Searchable;
 import java.util.ArrayList;
@@ -86,87 +85,5 @@ public class Main {
         Article article2 = new Article("Лучшие ноутбуки 2025", "Обзор лучших ноутбуков этого года...", "rrq");
         searchEngine.add(article1);
         searchEngine.add(article2);
-
-        // Выполняем поиск по разным строкам
-        String[] searchTerms = {"Dell", "Обзор", "смартфон", "мышь", "2025"};
-
-        for (String term : searchTerms) {
-            System.out.println("Результаты поиска по: \"" + term + "\":");
-            Searchable[] results = searchEngine.search(term);
-            for (Searchable result : results) {
-                if (result != null) {
-                    System.out.println(result.getStringRepresentation());
-                }
-            }
-            System.out.println();
-
-            // Проверка создания продуктов с неправильными данными
-            try {
-                SimpleProduct invalidProduct1 = new SimpleProduct("", 10);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-
-            try {
-                SimpleProduct invalidProduct2 = new SimpleProduct("Product", 0);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-
-            try {
-                DiscountedProduct invalidDiscount1 = new DiscountedProduct("Product", 100, -5);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-
-            try {
-                DiscountedProduct invalidDiscount2 = new DiscountedProduct("Product", 100, 150);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-            // Демонстрация проверки данных
-            try {
-                SimpleProduct invalidProduct1 = new SimpleProduct("", 10);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-
-            try {
-                SimpleProduct invalidProduct2 = new SimpleProduct("Product", 0);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-
-            try {
-                DiscountedProduct invalidDiscount1 = new DiscountedProduct("Product", 100, -5);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-            }
-        }
-        // Создаем список объектов Searchable
-        List<Searchable> items = new ArrayList<>();
-        items.add(new Article("Java programming basics","next", "414"));
-        items.add(new Article("Advanced Java techniques", "next", "3123"));
-        items.add(new Article("Introduction to Spring", "next", "4234"));
-
-        String searchTerm = "Java";
-
-        // Сценарий 1: объект существует
-        try {
-            Searchable result = SearchEngine.findBestMatch(searchTerm, items);
-            System.out.println("Найден подходящий объект: " + result.getSearchTerm());
-        } catch (BestResultNotFound e) {
-            System.out.println("Ошибка: " + e.getMessage());
-        }
-
-        // Сценарий 2: объект не найден, выбрасывается исключение
-        String searchTerm2 = "Python";
-
-        try {
-            Searchable result2 = SearchEngine.findBestMatch(searchTerm2, items);
-            System.out.println("Найден подходящий объект: " + result2.getSearchTerm());
-        } catch (BestResultNotFound e) {
-            System.out.println("Ошибка: " + e.getMessage());
         }
     }
-}
